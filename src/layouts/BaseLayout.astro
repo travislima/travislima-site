@@ -13,11 +13,14 @@ const pageTitle = title ? `${title} · ${SITE_TITLE}` : `${SITE_TITLE} · Ecomme
 const canonical = new URL(Astro.url.pathname, SITE_URL);
 const currentPath = Astro.url.pathname;
 
+const ogImage = new URL('/images/travis.jpg', SITE_URL);
+
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Travis Lima',
   url: SITE_URL,
+  image: ogImage.toString(),
   jobTitle: 'Customer Success Senior Manager',
   worksFor: {
     '@type': 'Organization',
@@ -47,10 +50,12 @@ const personSchema = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={SITE_TITLE} />
+    <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@travislima" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   </head>
