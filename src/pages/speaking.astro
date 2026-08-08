@@ -46,7 +46,7 @@ const topics = [
   <div class="mx-auto w-full max-w-3xl px-5">
     <section class="pt-16 pb-10 sm:pt-24">
       <p class="label">On stage</p>
-      <h1 class="mt-4 font-display text-4xl font-semibold tracking-tight">Speaking</h1>
+      <h1 class="mt-4 text-4xl font-bold tracking-tighter">Speaking</h1>
       <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
         I speak about what I see every day: how real merchants grow on WooCommerce and WordPress,
         from first sale to millions of orders. Practical, story-driven, and grounded in work
@@ -58,11 +58,11 @@ const topics = [
       <ul class="space-y-6">
         {
           talks.map((talk) => (
-            <li class="rounded-xl border border-line bg-surface-raised p-6 transition-all hover:border-accent hover:shadow-[0_0_32px_var(--accent-glow)]">
+            <li class="rounded-3xl bg-surface-raised p-8 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-surface-hover">
               <p class="label">
                 {talk.event} &middot; {talk.location} &middot; {talk.date}
               </p>
-              <h2 class="mt-3 font-display text-xl font-semibold">{talk.title}</h2>
+              <h2 class="mt-3 text-xl font-semibold tracking-tight">{talk.title}</h2>
               <p class="mt-2 leading-relaxed text-ink-muted">{talk.body}</p>
               <p class="mt-4 flex flex-wrap gap-4 text-sm">
                 {talk.links.map((link) => (
@@ -78,7 +78,7 @@ const topics = [
     </section>
 
     <section class="border-t border-line py-14">
-      <h2 class="font-display text-2xl font-semibold">Invite me to speak</h2>
+      <h2 class="text-2xl font-bold tracking-tight">Invite me to speak</h2>
       <p class="mt-4 max-w-2xl leading-relaxed text-ink-muted">
         I&rsquo;m happy to speak at WordCamps, ecommerce meetups, podcasts, and company events.
         Topics I love:
@@ -87,7 +87,7 @@ const topics = [
         {
           topics.map((topic) => (
             <li class="flex gap-3">
-              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent shadow-[0_0_8px_var(--accent-glow)]" aria-hidden="true" />
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
               <span>{topic}</span>
             </li>
           ))
@@ -95,7 +95,7 @@ const topics = [
       </ul>
       <a
         href="/contact/"
-        class="mt-8 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-all hover:bg-accent-strong hover:shadow-[0_0_24px_var(--accent-glow)]"
+        class="mt-8 inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors duration-300 hover:bg-accent-strong"
       >
         Get in touch
       </a>

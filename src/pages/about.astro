@@ -40,7 +40,7 @@ const timeline = [
           height="460"
           class="duotone h-20 w-20 rounded-full border border-line object-cover sm:h-28 sm:w-28"
         />
-        <h1 class="font-display text-4xl font-semibold tracking-tight">About</h1>
+        <h1 class="text-4xl font-bold tracking-tighter">About</h1>
       </div>
       <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
         The <a href="/" class="text-accent-strong underline underline-offset-3 hover:text-accent-bright">full story lives on the homepage</a>.
@@ -54,11 +54,11 @@ const timeline = [
           timeline.map((item) => (
             <li class="relative">
               <span
-                class="absolute -left-[45px] top-1 h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_10px_var(--accent-glow)]"
+                class="absolute -left-[45px] top-1 h-2.5 w-2.5 rounded-full bg-accent"
                 aria-hidden="true"
               />
               <p class="label">{item.period}</p>
-              <h2 class="mt-2 font-display text-xl font-semibold">{item.title}</h2>
+              <h2 class="mt-2 text-xl font-semibold tracking-tight">{item.title}</h2>
               <p class="mt-2 max-w-2xl leading-relaxed text-ink-muted">{item.body}</p>
             </li>
           ))
@@ -67,7 +67,7 @@ const timeline = [
     </section>
 
     <section class="border-t border-line py-14">
-      <h2 class="font-display text-2xl font-semibold">Off the clock</h2>
+      <h2 class="text-2xl font-bold tracking-tight">Off the clock</h2>
       <p class="mt-4 max-w-2xl leading-relaxed text-ink-muted">
         South African, now based in San Francisco, with digital-nomad years in between. I build side
         projects on

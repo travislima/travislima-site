@@ -4,15 +4,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 2);
+  .slice(0, 1);
 
 const chapters = [
   {
     number: '01',
     label: 'Before 2013',
     title: 'The Inspector',
+    statement: 'Steel, heat, and consequences.',
     paragraphs: [
-      'My job was deciding whether welds would hold. Qualified Welding and Coating Inspector, Level 2, South African Institute of Welding. Steel, heat, and consequences.',
+      'Qualified Welding and Coating Inspector, Level 2, South African Institute of Welding. My job was deciding whether welds would hold.',
       'Inspection teaches you a discipline that never leaves: look closely. Ask why. Never sign off on work you haven’t verified.',
       'I was good at it. I also knew it wasn’t the future I wanted.',
     ],
@@ -21,29 +22,29 @@ const chapters = [
     number: '02',
     label: '2013',
     title: 'The Door',
+    statement: 'It wasn’t good. It changed everything.',
     paragraphs: [
-      'I built my first WordPress site. It wasn’t good. It changed everything.',
-      'The open web was a door with no gatekeeper. No degree required, no permission needed, nobody checking where you came from. Just whatever you were willing to teach yourself.',
-      'I taught myself design and development, and I walked through.',
+      'My first WordPress site. The open web was a door with no gatekeeper: no degree required, no permission needed, nobody checking where you came from.',
+      'Just whatever you were willing to teach yourself. I taught myself design and development, and I walked through.',
     ],
   },
   {
     number: '03',
     label: '2016 to 2021',
     title: 'The Long Middle',
+    statement: 'Not the old thing anymore. Not yet the new thing.',
     paragraphs: [
-      'Nobody tells you about the long middle of a career change: the years where you’re not the old thing anymore, but not yet the new thing either.',
-      'Freelance projects. Then Paid Memberships Pro: support engineering, tutorials, webinars, running their YouTube channel. Thousands of tickets, each one a real person betting on a business.',
-      'Support turned out to be the best ecommerce education that exists. I answered my way through it from all over the world.',
+      'Nobody tells you about the long middle of a career change. Freelance projects. Then Paid Memberships Pro: support engineering, tutorials, webinars, running their YouTube channel.',
+      'Thousands of tickets, each one a real person betting on a business. Support turned out to be the best ecommerce education that exists. I answered my way through it from all over the world.',
     ],
   },
   {
     number: '04',
     label: '2021 to now',
     title: 'The Other Side of the Table',
+    statement: 'I still inspect things for a living. The welds just look different now.',
     paragraphs: [
       'Today I sit across from the largest merchants on the open web as a customer success leader at WooCommerce. I helped build the sales and customer success team from zero.',
-      'I still inspect things for a living. The welds just look different now.',
     ],
   },
 ];
@@ -57,57 +58,43 @@ const stats = [
 
 <BaseLayout>
   <!-- Cold open -->
-  <section class="relative flex min-h-[92svh] flex-col justify-center overflow-hidden">
-    <div class="blueprint absolute inset-0" aria-hidden="true"></div>
-    <div class="glow absolute inset-x-0 top-0 h-[60vh]" aria-hidden="true"></div>
-    <div class="relative mx-auto flex w-full max-w-5xl items-start justify-between gap-10 px-5 pt-24">
-      <div class="min-w-0">
-        <p class="label">Port Elizabeth, South Africa</p>
-        <h1
-          class="mt-6 max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
+  <section class="relative flex min-h-[92svh] flex-col items-center justify-center overflow-hidden text-center">
+    <div class="wash absolute inset-x-0 top-0 h-[70vh]" aria-hidden="true"></div>
+    <div class="relative mx-auto w-full max-w-4xl px-5 pt-20 pb-16">
+      <p class="label">Port Elizabeth, South Africa</p>
+      <h1
+        class="mx-auto mt-8 max-w-3xl text-5xl font-bold leading-[1.04] tracking-tighter sm:text-6xl lg:text-7xl"
+      >
+        <span class="text-gradient">Ten years ago, my job was deciding whether</span>
+        <span class="text-gradient-blue">welds would hold.</span>
+      </h1>
+      <p class="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-ink-muted">
+        This is the story of how the open web changed that, and why I now spend my days helping
+        serious ecommerce merchants scale on WooCommerce.
+      </p>
+      <div class="mt-10 flex items-center justify-center gap-6">
+        <a
+          href="#chapter-01"
+          class="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors duration-300 hover:bg-accent-strong"
         >
-          Ten years ago, my job was deciding whether welds would hold.
-        </h1>
-        <p class="mt-8 max-w-xl text-lg leading-relaxed text-ink-muted">
-          This is the story of how the open web changed that, and why I now spend my days helping
-          serious ecommerce merchants scale on WooCommerce.
-        </p>
+          Read the story
+        </a>
+        <a href="/writing/" class="chevron-link">Skip to the writing</a>
       </div>
       <img
         src="/images/travis.jpg"
         alt="Travis Lima"
         width="460"
         height="460"
-        class="duotone mt-10 hidden h-32 w-32 shrink-0 rounded-2xl border border-line object-cover shadow-[0_0_40px_var(--accent-glow)] lg:block xl:h-40 xl:w-40"
+        class="duotone mx-auto mt-14 h-28 w-28 rounded-[2rem] object-cover sm:h-32 sm:w-32"
       />
-    </div>
-    <div class="relative mx-auto w-full max-w-5xl px-5 pb-24">
-      <div class="mt-10 flex items-center gap-4">
-        <a
-          href="#chapter-01"
-          class="rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-all hover:bg-accent-strong hover:shadow-[0_0_24px_var(--accent-glow)]"
-        >
-          Read the story
-        </a>
-        <a
-          href="/writing/"
-          class="rounded-full border border-line px-6 py-3 text-sm font-medium text-ink-muted transition-colors hover:border-accent hover:text-accent-strong"
-        >
-          Skip to the writing
-        </a>
-      </div>
-    </div>
-    <div class="pointer-events-none absolute bottom-8 left-1/2 -translate-x-1/2 text-ink-muted" aria-hidden="true">
-      <svg width="20" height="28" viewBox="0 0 20 28" fill="none" class="animate-bounce">
-        <path d="M10 4v20m0 0l-6-6m6 6l6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
     </div>
   </section>
 
   <!-- The journey -->
   <section class="relative mx-auto w-full max-w-5xl px-5" aria-label="My story">
     <div class="relative">
-      <div class="seam left-[1.35rem] sm:left-1/2 sm:-translate-x-1/2" aria-hidden="true">
+      <div class="seam left-[1.2rem] sm:left-1/2 sm:-translate-x-1/2" aria-hidden="true">
         <div class="seam-fill"></div>
       </div>
 
@@ -123,16 +110,17 @@ const stats = [
               <div
                 class:list={[
                   'absolute top-0 left-0 sm:static',
-                  i % 2 === 0 ? 'sm:absolute sm:-right-[1.375rem] sm:left-auto' : 'sm:absolute sm:-left-[1.375rem]',
+                  i % 2 === 0 ? 'sm:absolute sm:-right-[1.25rem] sm:left-auto' : 'sm:absolute sm:-left-[1.25rem]',
                 ]}
               >
                 <span class="stamp">{chapter.number}</span>
               </div>
-              <div class="reveal pl-16 sm:pl-0">
-                <p class="label">{chapter.label}</p>
-                <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-                  {chapter.title}
-                </h2>
+              <div class="reveal pl-14 sm:pl-0">
+                <p class="label label-blue">{chapter.label}</p>
+                <h2 class="mt-3 text-3xl font-bold tracking-tighter sm:text-4xl">{chapter.title}</h2>
+                <p class="mt-5 text-xl font-medium leading-snug tracking-tight text-ink sm:text-2xl">
+                  {chapter.statement}
+                </p>
                 {chapter.paragraphs.map((text) => (
                   <p class="mt-5 leading-relaxed text-ink-muted">{text}</p>
                 ))}
@@ -145,16 +133,13 @@ const stats = [
   </section>
 
   <!-- The numbers, oversized -->
-  <section class="relative overflow-hidden border-y border-line bg-surface-raised" aria-label="Where the story stands">
-    <div class="glow absolute inset-x-0 top-0 h-full opacity-60" aria-hidden="true"></div>
-    <div class="relative mx-auto grid w-full max-w-5xl gap-12 px-5 py-20 sm:grid-cols-3 sm:py-24">
+  <section class="border-t border-line" aria-label="Where the story stands">
+    <div class="mx-auto grid w-full max-w-5xl gap-14 px-5 py-24 text-center sm:grid-cols-3 sm:py-28">
       {
         stats.map((stat) => (
           <div class="reveal">
-            <p class="font-display text-5xl font-semibold tracking-tight text-accent-strong sm:text-6xl">
-              {stat.value}
-            </p>
-            <p class="mt-3 max-w-[16rem] text-sm leading-relaxed text-ink-muted">{stat.caption}</p>
+            <p class="text-gradient text-6xl font-bold tracking-tighter sm:text-7xl">{stat.value}</p>
+            <p class="mx-auto mt-4 max-w-[15rem] text-sm leading-relaxed text-ink-muted">{stat.caption}</p>
           </div>
         ))
       }
@@ -162,57 +147,56 @@ const stats = [
   </section>
 
   <!-- Epilogue -->
-  <section class="mx-auto w-full max-w-5xl px-5 py-24 sm:py-32" aria-label="Where the story goes next">
-    <div class="max-w-2xl">
-      <p class="label">Epilogue</p>
-      <h2 class="mt-4 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-        The platform that changed my life is changing theirs.
-      </h2>
-      <p class="mt-6 leading-relaxed text-ink-muted">
-        That&rsquo;s the part I can&rsquo;t get over. The same open web that let a welding inspector
-        rewrite his story is powering merchants who started from nothing and now ship millions of
-        orders. I write about what they do differently, I tell their stories on stage, and I answer
-        when people standing where I stood in 2013 reach out.
-      </p>
-    </div>
+  <section class="border-t border-line" aria-label="Where the story goes next">
+    <div class="mx-auto w-full max-w-5xl px-5 py-24 sm:py-32">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="label">Epilogue</p>
+        <h2 class="mt-5 text-3xl font-bold tracking-tighter sm:text-5xl">
+          <span class="text-gradient">The platform that changed my life is changing theirs.</span>
+        </h2>
+        <p class="mt-7 leading-relaxed text-ink-muted">
+          That&rsquo;s the part I can&rsquo;t get over. The same open web that let a welding inspector
+          rewrite his story is powering merchants who started from nothing and now ship millions of
+          orders. I write about what they do differently, I tell their stories on stage, and I answer
+          when people standing where I stood in 2013 reach out.
+        </p>
+      </div>
 
-    <div class="mt-14 grid gap-5 sm:grid-cols-3">
-      <a
-        href="/writing/"
-        class="group rounded-xl border border-line bg-surface-raised p-6 transition-all hover:border-accent hover:shadow-[0_0_32px_var(--accent-glow)]"
-      >
-        <p class="label">Read</p>
-        <h3 class="mt-3 font-display text-lg font-semibold group-hover:text-accent-strong transition-colors">
-          The writing
-        </h3>
-        <p class="mt-2 text-sm leading-relaxed text-ink-muted">
-          {posts[0] ? `Latest: ${posts[0].data.title}` : 'Notes on ecommerce, customer success, and the open web.'}
-        </p>
-      </a>
-      <a
-        href="/speaking/"
-        class="group rounded-xl border border-line bg-surface-raised p-6 transition-all hover:border-accent hover:shadow-[0_0_32px_var(--accent-glow)]"
-      >
-        <p class="label">Listen</p>
-        <h3 class="mt-3 font-display text-lg font-semibold group-hover:text-accent-strong transition-colors">
-          The talks
-        </h3>
-        <p class="mt-2 text-sm leading-relaxed text-ink-muted">
-          WordCamp Europe and US 2024, and the Do the Woo podcast.
-        </p>
-      </a>
-      <a
-        href="/contact/"
-        class="group rounded-xl border border-line bg-surface-raised p-6 transition-all hover:border-accent hover:shadow-[0_0_32px_var(--accent-glow)]"
-      >
-        <p class="label">Talk</p>
-        <h3 class="mt-3 font-display text-lg font-semibold group-hover:text-accent-strong transition-colors">
-          Say hi
-        </h3>
-        <p class="mt-2 text-sm leading-relaxed text-ink-muted">
-          Speaking invitations, podcasts, or a gnarly ecommerce question. I answer.
-        </p>
-      </a>
+      <div class="mt-16 grid gap-5 sm:grid-cols-3">
+        <a
+          href="/writing/"
+          class="group rounded-3xl bg-surface-raised p-8 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-surface-hover"
+        >
+          <p class="label">Read</p>
+          <h3 class="mt-3 text-lg font-semibold tracking-tight">The writing</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-muted">
+            {posts[0] ? `Latest: ${posts[0].data.title}` : 'Notes on ecommerce, customer success, and the open web.'}
+          </p>
+          <span class="chevron-link mt-5">Explore</span>
+        </a>
+        <a
+          href="/speaking/"
+          class="group rounded-3xl bg-surface-raised p-8 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-surface-hover"
+        >
+          <p class="label">Listen</p>
+          <h3 class="mt-3 text-lg font-semibold tracking-tight">The talks</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-muted">
+            WordCamp Europe and US 2024, and the Do the Woo podcast.
+          </p>
+          <span class="chevron-link mt-5">Explore</span>
+        </a>
+        <a
+          href="/contact/"
+          class="group rounded-3xl bg-surface-raised p-8 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-surface-hover"
+        >
+          <p class="label">Talk</p>
+          <h3 class="mt-3 text-lg font-semibold tracking-tight">Say hi</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-muted">
+            Speaking invitations, podcasts, or a gnarly ecommerce question. I answer.
+          </p>
+          <span class="chevron-link mt-5">Get in touch</span>
+        </a>
+      </div>
     </div>
   </section>
 </BaseLayout>

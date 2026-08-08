@@ -83,16 +83,16 @@ const personSchema = {
     </script>
   </head>
   <body class="min-h-screen flex flex-col">
-    <header class="sticky top-0 z-50 border-b border-line bg-surface/80 backdrop-blur-md">
-      <div class="mx-auto flex w-full max-w-5xl items-center justify-between px-5 py-4">
+    <header class="sticky top-0 z-50 border-b border-line bg-black/70 backdrop-blur-xl">
+      <div class="mx-auto flex w-full max-w-5xl items-center justify-between px-5 py-3">
         <a
           href="/"
-          class="font-display text-base font-semibold tracking-tight transition-colors hover:text-accent-strong"
+          class="text-sm font-semibold tracking-tight transition-colors duration-300 hover:text-accent-strong"
         >
           Travis&nbsp;Lima
         </a>
         <nav aria-label="Main">
-          <ul class="flex items-center gap-6 text-sm">
+          <ul class="flex items-center gap-7 text-xs">
             {
               NAV_LINKS.map((link) => (
                 <li>
@@ -100,10 +100,8 @@ const personSchema = {
                     href={link.href}
                     aria-current={currentPath.startsWith(link.href) ? 'page' : undefined}
                     class:list={[
-                      'transition-colors hover:text-accent-strong',
-                      currentPath.startsWith(link.href)
-                        ? 'text-accent-strong font-medium underline decoration-accent decoration-2 underline-offset-8'
-                        : 'text-ink-muted',
+                      'transition-colors duration-300 hover:text-accent-strong',
+                      currentPath.startsWith(link.href) ? 'text-accent-strong font-medium' : 'text-ink-muted',
                     ]}
                   >
                     {link.label}
@@ -121,7 +119,7 @@ const personSchema = {
     </main>
 
     <footer class="border-t border-line mt-24">
-      <div class="mx-auto w-full max-w-5xl px-5 py-12 text-sm text-ink-muted">
+      <div class="mx-auto w-full max-w-5xl px-5 py-10 text-xs text-ink-muted">
         <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
           <a href={SOCIAL.github} class="transition-colors hover:text-accent-strong" rel="me">GitHub</a>
           <a href={SOCIAL.x} class="transition-colors hover:text-accent-strong" rel="me">X</a>
