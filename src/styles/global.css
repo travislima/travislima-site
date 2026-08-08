@@ -15,6 +15,7 @@
   --line: rgba(255, 255, 255, 0.08);
   --accent: #2e6bff;
   --accent-strong: #5c8dff;
+  --accent-bright: #8fb1ff;
   --accent-glow: rgba(46, 107, 255, 0.35);
 }
 
@@ -26,6 +27,7 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
+  --color-accent-bright: var(--accent-bright);
   --font-display: 'Space Grotesk Variable', 'Inter Variable', system-ui, sans-serif;
   --font-body: 'Inter Variable', system-ui, sans-serif;
 }
@@ -207,7 +209,7 @@ html.js .reveal.is-visible {
 }
 
 .prose-article a:hover {
-  color: var(--ink);
+  color: var(--accent-bright);
 }
 
 .prose-article ul,

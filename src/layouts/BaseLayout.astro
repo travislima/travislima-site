@@ -100,8 +100,10 @@ const personSchema = {
                     href={link.href}
                     aria-current={currentPath.startsWith(link.href) ? 'page' : undefined}
                     class:list={[
-                      'transition-colors hover:text-ink',
-                      currentPath.startsWith(link.href) ? 'text-accent-strong font-medium' : 'text-ink-muted',
+                      'transition-colors hover:text-accent-strong',
+                      currentPath.startsWith(link.href)
+                        ? 'text-accent-strong font-medium underline decoration-accent decoration-2 underline-offset-8'
+                        : 'text-ink-muted',
                     ]}
                   >
                     {link.label}
