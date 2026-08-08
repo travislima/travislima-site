@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { title, description = SITE_DESCRIPTION, ogType = 'website' } = Astro.props;
-const pageTitle = title ? `${title} — ${SITE_TITLE}` : `${SITE_TITLE} — Ecommerce, WooCommerce & Customer Success`;
+const pageTitle = title ? `${title} · ${SITE_TITLE}` : `${SITE_TITLE} · Ecommerce, WooCommerce & Customer Success`;
 const canonical = new URL(Astro.url.pathname, SITE_URL);
 const currentPath = Astro.url.pathname;
 

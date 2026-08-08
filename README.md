@@ -1,6 +1,6 @@
 # travislima.com
 
-Personal brand site for **Travis Lima** — ecommerce & customer success at WooCommerce, WordCamp speaker, and a decade in WordPress.
+Personal brand site for **Travis Lima**: ecommerce & customer success at WooCommerce, WordCamp speaker, and a decade in WordPress.
 
 Built with [Astro](https://astro.build) + [Tailwind CSS v4](https://tailwindcss.com). No client-side JavaScript, fully static, dark-mode aware.
 
@@ -41,13 +41,13 @@ draft: false
 Post body…
 ```
 
-The three seeded posts are **starter drafts written on Travis's behalf** — edit freely before promoting the site.
+The three seeded posts are **starter drafts written on Travis's behalf**. Edit freely before promoting the site.
 
 ## Deploying
 
 A GitHub Pages workflow (`.github/workflows/deploy.yml`) deploys on push to `main` (enable **Settings → Pages → Source: GitHub Actions**). The site also works as-is on Cloudflare Pages or Netlify (build command `npm run build`, output `dist/`).
 
-`astro.config.mjs` sets `site: 'https://travislima.com'` — update if deploying to a different domain first (e.g. a `*.github.io` preview needs `site` + `base` adjusted).
+`astro.config.mjs` sets `site: 'https://travislima.com'`. Update it if deploying to a different domain first (e.g. a `*.github.io` preview needs `site` + `base` adjusted).
 
 ## Still to do (deliberately not in v1)
 
