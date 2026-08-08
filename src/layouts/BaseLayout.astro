@@ -43,7 +43,8 @@ const personSchema = {
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss.xml" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#07080a" />
 
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={pageTitle} />
@@ -58,15 +59,40 @@ const personSchema = {
     <meta name="twitter:image" content={ogImage} />
 
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script>
+      document.documentElement.classList.add('js');
+      const reveal = () => {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.15 }
+        );
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      };
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', reveal);
+      } else {
+        reveal();
+      }
+    </script>
   </head>
   <body class="min-h-screen flex flex-col">
-    <header class="border-b border-line">
-      <div class="mx-auto flex w-full max-w-3xl items-center justify-between px-5 py-5">
-        <a href="/" class="font-display text-lg font-semibold tracking-tight hover:text-accent transition-colors">
-          Travis Lima
+    <header class="sticky top-0 z-50 border-b border-line bg-surface/80 backdrop-blur-md">
+      <div class="mx-auto flex w-full max-w-5xl items-center justify-between px-5 py-4">
+        <a
+          href="/"
+          class="font-display text-base font-semibold tracking-tight transition-colors hover:text-accent-strong"
+        >
+          Travis&nbsp;Lima
         </a>
         <nav aria-label="Main">
-          <ul class="flex items-center gap-5 text-sm">
+          <ul class="flex items-center gap-6 text-sm">
             {
               NAV_LINKS.map((link) => (
                 <li>
@@ -74,8 +100,8 @@ const personSchema = {
                     href={link.href}
                     aria-current={currentPath.startsWith(link.href) ? 'page' : undefined}
                     class:list={[
-                      'transition-colors hover:text-accent',
-                      currentPath.startsWith(link.href) ? 'text-accent font-medium' : 'text-ink-muted',
+                      'transition-colors hover:text-ink',
+                      currentPath.startsWith(link.href) ? 'text-accent-strong font-medium' : 'text-ink-muted',
                     ]}
                   >
                     {link.label}
@@ -88,21 +114,21 @@ const personSchema = {
       </div>
     </header>
 
-    <main class="flex-1 w-full mx-auto max-w-3xl px-5">
+    <main class="flex-1 w-full">
       <slot />
     </main>
 
-    <footer class="border-t border-line mt-20">
-      <div class="mx-auto w-full max-w-3xl px-5 py-10 text-sm text-ink-muted">
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href={SOCIAL.github} class="hover:text-accent transition-colors" rel="me">GitHub</a>
-          <a href={SOCIAL.x} class="hover:text-accent transition-colors" rel="me">X</a>
-          <a href={SOCIAL.linkedin} class="hover:text-accent transition-colors" rel="me">LinkedIn</a>
-          <a href={SOCIAL.wordpress} class="hover:text-accent transition-colors" rel="me">WordPress.org</a>
-          <a href={`mailto:${EMAIL}`} class="hover:text-accent transition-colors">Email</a>
-          <a href="/rss.xml" class="hover:text-accent transition-colors">RSS</a>
+    <footer class="border-t border-line mt-24">
+      <div class="mx-auto w-full max-w-5xl px-5 py-12 text-sm text-ink-muted">
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <a href={SOCIAL.github} class="transition-colors hover:text-accent-strong" rel="me">GitHub</a>
+          <a href={SOCIAL.x} class="transition-colors hover:text-accent-strong" rel="me">X</a>
+          <a href={SOCIAL.linkedin} class="transition-colors hover:text-accent-strong" rel="me">LinkedIn</a>
+          <a href={SOCIAL.wordpress} class="transition-colors hover:text-accent-strong" rel="me">WordPress.org</a>
+          <a href={`mailto:${EMAIL}`} class="transition-colors hover:text-accent-strong">Email</a>
+          <a href="/rss.xml" class="transition-colors hover:text-accent-strong">RSS</a>
         </div>
-        <p class="mt-4">
+        <p class="mt-5">
           &copy; {new Date().getFullYear()} Travis Lima. Views are my own, not my employer&rsquo;s.
         </p>
       </div>

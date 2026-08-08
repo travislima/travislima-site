@@ -3,15 +3,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Page not found" description="This page doesn't exist.">
-  <section class="pt-24 pb-14 text-center">
-    <p class="text-sm font-medium uppercase tracking-[0.2em] text-accent">404</p>
-    <h1 class="mt-4 font-display text-4xl font-semibold tracking-tight">This page doesn&rsquo;t exist.</h1>
-    <p class="mt-4 text-ink-muted">Like a store without products: nothing to see here.</p>
+  <section class="relative mx-auto w-full max-w-3xl overflow-hidden px-5 pt-28 pb-14 text-center">
+    <div class="glow absolute inset-x-0 top-0 h-64" aria-hidden="true"></div>
+    <p class="label relative">404 · Inspection failed</p>
+    <h1 class="relative mt-4 font-display text-4xl font-semibold tracking-tight">This page doesn&rsquo;t exist.</h1>
+    <p class="relative mt-4 text-ink-muted">Like a store without products: nothing to see here.</p>
     <a
       href="/"
-      class="mt-8 inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-surface transition-colors hover:bg-accent-strong"
+      class="relative mt-10 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-all hover:bg-accent-strong hover:shadow-[0_0_24px_var(--accent-glow)]"
     >
-      Back home
+      Back to the story
     </a>
   </section>
 </BaseLayout>
