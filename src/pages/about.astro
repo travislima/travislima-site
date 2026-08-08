@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const timeline = [
+  {
+    period: 'Before 2013',
+    title: 'Welding & Coating Inspector — South Africa',
+    body: 'I qualified as a Welding and Coating Inspector (Level 2, South African Institute of Welding). Inspection taught me something I still use every day: look closely, ask why, and never sign off on work you haven’t verified.',
+  },
+  {
+    period: '2013',
+    title: 'Found WordPress',
+    body: 'I built my first WordPress site and realized the open web was a door anyone could walk through — no matter where they started. I taught myself design and development and began freelancing as Travis Lima Design.',
+  },
+  {
+    period: '2016 – 2021',
+    title: 'Paid Memberships Pro',
+    body: 'Support engineer, content creator, and webinar host. I ran the PMPro YouTube channel, produced tutorials, and helped thousands of people build membership businesses on WordPress. Along the way I worked remotely from all over the world and started The Howzit Podcast.',
+  },
+  {
+    period: '2021 – today',
+    title: 'WooCommerce',
+    body: 'I joined Woo to build bridges between the platform and its largest merchants. Today, as a senior customer success leader, I consult with stores doing $1M+ a year, help them solve intricate ecommerce challenges, and helped grow the sales & customer success team from zero into a meaningful part of Woo’s revenue.',
+  },
+];
+---
+
+<BaseLayout
+  title="About"
+  description="From welding inspector in South Africa to customer success leader at WooCommerce — Travis Lima's story of how WordPress changed everything."
+>
+  <section class="pt-16 pb-10">
+    <h1 class="font-display text-4xl font-semibold tracking-tight">About</h1>
+    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
+      The short version: WordPress played a monumental role in helping me change careers and craft a
+      future I never thought possible. The longer version is below — and it&rsquo;s why I care so
+      much about the merchants I work with. I know exactly what it feels like to bet on yourself.
+    </p>
+  </section>
+
+  <section class="pb-14" aria-label="Career timeline">
+    <ol class="relative space-y-10 border-l border-line pl-8">
+      {
+        timeline.map((item) => (
+          <li class="relative">
+            <span class="absolute -left-[37px] top-1.5 h-3 w-3 rounded-full border-2 border-accent bg-surface" aria-hidden="true" />
+            <p class="text-xs font-medium uppercase tracking-[0.2em] text-accent">{item.period}</p>
+            <h2 class="mt-1 font-display text-xl font-semibold">{item.title}</h2>
+            <p class="mt-2 max-w-2xl leading-relaxed text-ink-muted">{item.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="border-t border-line py-14">
+    <h2 class="font-display text-2xl font-semibold">Off the clock</h2>
+    <p class="mt-4 max-w-2xl leading-relaxed text-ink-muted">
+      I&rsquo;m South African, now based in San Francisco, and I spent years as a digital nomad
+      before that — which is where my conviction about remote work comes from. I build side
+      projects (you&rsquo;ll find them on
+      <a href="https://github.com/travislima" class="text-accent underline underline-offset-2 hover:text-accent-strong">GitHub</a>),
+      I&rsquo;ve hosted
+      <a href="https://travislima.blog/" class="text-accent underline underline-offset-2 hover:text-accent-strong">The Howzit Podcast</a>,
+      and I write about ecommerce, remote work, and building a career on the open web.
+    </p>
+    <p class="mt-4 max-w-2xl leading-relaxed text-ink-muted">
+      If any of that resonates, <a href="/contact/" class="text-accent underline underline-offset-2 hover:text-accent-strong">say hi</a> —
+      I answer.
+    </p>
+  </section>
+</BaseLayout>

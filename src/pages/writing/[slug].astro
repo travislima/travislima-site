@@ -1,0 +1,53 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={post.data.title} description={post.data.description} ogType="article">
+  <article class="pt-16 pb-14">
+    <header class="mb-10">
+      <time datetime={post.data.pubDate.toISOString()} class="text-xs uppercase tracking-[0.2em] text-ink-muted">
+        {
+          post.data.pubDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })
+        }
+      </time>
+      <h1 class="mt-2 font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+        {post.data.title}
+      </h1>
+      {
+        post.data.tags.length > 0 && (
+          <p class="mt-4 flex flex-wrap gap-2">
+            {post.data.tags.map((tag) => (
+              <span class="rounded-full border border-line px-3 py-1 text-xs text-ink-muted">{tag}</span>
+            ))}
+          </p>
+        )
+      }
+    </header>
+    <div class="prose-article">
+      <Content />
+    </div>
+    <footer class="mt-12 border-t border-line pt-6 text-sm text-ink-muted">
+      <p>
+        Thanks for reading. Find me on
+        <a href="https://x.com/travislima" class="text-accent underline underline-offset-2 hover:text-accent-strong">X</a>
+        or <a href="/contact/" class="text-accent underline underline-offset-2 hover:text-accent-strong">get in touch</a>.
+      </p>
+    </footer>
+  </article>
+</BaseLayout>

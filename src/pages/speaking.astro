@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const talks = [
+  {
+    event: 'WordCamp US 2024',
+    location: 'Portland, Oregon',
+    date: 'September 2024',
+    title: 'Decoding the Woo and WordPress Strategies of Industry Giants',
+    body: 'With Bryce Adams. How enterprise-level brands scale on WordPress and WooCommerce — including a business that grew from nothing to over 1.5 million subscription orders a year. You don’t need to write code to build a global brand.',
+    links: [
+      { label: 'Watch on WordPress.tv', href: 'https://wordpress.tv/2024/10/10/decoding-the-woo-and-wordpress-strategies-of-industry-giants/' },
+      { label: 'Speaker page', href: 'https://us.wordcamp.org/2024/speaker/travis-lima/' },
+    ],
+  },
+  {
+    event: 'WordCamp Europe 2024',
+    location: 'Torino, Italy',
+    date: 'June 2024',
+    title: 'Speaker — WordCamp Europe',
+    body: 'Speaking to the European WordPress community about scaling businesses with WordPress and WooCommerce.',
+    links: [{ label: 'Speaker page', href: 'https://europe.wordcamp.org/2024/speaker/travis-lima/' }],
+  },
+  {
+    event: 'Do the Woo Podcast',
+    location: 'Podcast',
+    date: 'Guest',
+    title: 'Guest on Do the Woo',
+    body: 'Conversations about the WooCommerce ecosystem, customer success, and what it takes for merchants to thrive.',
+    links: [{ label: 'Listen on Do the Woo', href: 'https://dothewoo.io/guest/travis-lima/' }],
+  },
+];
+
+const topics = [
+  'How enterprise merchants actually scale on WooCommerce',
+  'Customer success as a growth engine for ecommerce',
+  'Building a career on the open web — from anywhere in the world',
+  'What the largest Woo stores do differently (and what small stores can steal)',
+];
+---
+
+<BaseLayout
+  title="Speaking"
+  description="Travis Lima speaks about ecommerce, WooCommerce, and customer success — WordCamp US 2024, WordCamp Europe 2024, and the Do the Woo podcast."
+>
+  <section class="pt-16 pb-10">
+    <h1 class="font-display text-4xl font-semibold tracking-tight">Speaking</h1>
+    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
+      I speak about what I see every day: how real merchants — from first sale to millions of
+      orders — grow on WooCommerce and WordPress. Practical, story-driven, and grounded in work
+      with some of the largest stores on the open web.
+    </p>
+  </section>
+
+  <section class="pb-14" aria-label="Past talks">
+    <ul class="space-y-8">
+      {
+        talks.map((talk) => (
+          <li class="rounded-xl border border-line bg-surface-raised p-6">
+            <p class="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+              {talk.event} &middot; {talk.location} &middot; {talk.date}
+            </p>
+            <h2 class="mt-2 font-display text-xl font-semibold">{talk.title}</h2>
+            <p class="mt-2 leading-relaxed text-ink-muted">{talk.body}</p>
+            <p class="mt-3 flex flex-wrap gap-4 text-sm">
+              {talk.links.map((link) => (
+                <a href={link.href} class="text-accent underline underline-offset-2 hover:text-accent-strong">
+                  {link.label}
+                </a>
+              ))}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="border-t border-line py-14">
+    <h2 class="font-display text-2xl font-semibold">Invite me to speak</h2>
+    <p class="mt-4 max-w-2xl leading-relaxed text-ink-muted">
+      I&rsquo;m happy to speak at WordCamps, ecommerce meetups, podcasts, and company events.
+      Topics I love:
+    </p>
+    <ul class="mt-4 max-w-2xl space-y-2 text-ink-muted">
+      {
+        topics.map((topic) => (
+          <li class="flex gap-3">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+            <span>{topic}</span>
+          </li>
+        ))
+      }
+    </ul>
+    <a
+      href="/contact/"
+      class="mt-6 inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-surface transition-colors hover:bg-accent-strong"
+    >
+      Get in touch
+    </a>
+  </section>
+</BaseLayout>

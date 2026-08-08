@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { EMAIL, SOCIAL } from '../consts';
+
+const channels = [
+  { label: 'Email', value: EMAIL, href: `mailto:${EMAIL}`, note: 'Best for speaking invitations and anything longer.' },
+  { label: 'LinkedIn', value: 'in/travislima', href: SOCIAL.linkedin, note: 'Work, ecommerce, and customer success.' },
+  { label: 'X (Twitter)', value: '@travislima', href: SOCIAL.x, note: 'Quickest way to reach me.' },
+  { label: 'GitHub', value: 'travislima', href: SOCIAL.github, note: 'Side projects and experiments.' },
+  { label: 'WordPress.org', value: '@travislima', href: SOCIAL.wordpress, note: 'My profile in the WordPress community.' },
+];
+---
+
+<BaseLayout
+  title="Contact"
+  description="Get in touch with Travis Lima — speaking invitations, podcasts, ecommerce conversations, or just to say hi."
+>
+  <section class="pt-16 pb-10">
+    <h1 class="font-display text-4xl font-semibold tracking-tight">Contact</h1>
+    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
+      Speaking invitation? Podcast? A gnarly ecommerce question? Or you&rsquo;re standing where I
+      stood in 2013, wondering if the open web could change your life too? Reach out — I answer.
+    </p>
+  </section>
+
+  <section class="pb-14" aria-label="Ways to reach me">
+    <ul class="divide-y divide-line border-y border-line">
+      {
+        channels.map((channel) => (
+          <li>
+            <a href={channel.href} class="group flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-6">
+              <span class="w-32 shrink-0 text-xs font-medium uppercase tracking-[0.2em] text-ink-muted">
+                {channel.label}
+              </span>
+              <span class="font-medium text-accent group-hover:text-accent-strong transition-colors">
+                {channel.value}
+              </span>
+              <span class="text-sm text-ink-muted sm:ml-auto sm:text-right">{channel.note}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

@@ -1,0 +1,107 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const proofPoints = [
+  {
+    title: 'Enterprise customer success at WooCommerce',
+    body: 'I work with some of the largest stores on the open web — helping merchants doing $1M+ a year solve hard ecommerce problems and scale with confidence.',
+  },
+  {
+    title: 'WordCamp Europe & US 2024 speaker',
+    body: 'I share what enterprise merchants actually do to grow, from the main stages of the WordPress community’s biggest events.',
+    href: '/speaking/',
+  },
+  {
+    title: 'A decade in WordPress',
+    body: 'From building sites in 2013, to support and content at Paid Memberships Pro, to leading customer success conversations at Woo.',
+    href: '/about/',
+  },
+];
+---
+
+<BaseLayout>
+  <section class="pt-16 pb-14 sm:pt-24">
+    <p class="text-sm font-medium uppercase tracking-[0.2em] text-accent">
+      Ecommerce &middot; WooCommerce &middot; Customer Success
+    </p>
+    <h1 class="mt-4 font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+      I help serious ecommerce merchants scale on WooCommerce.
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
+      I&rsquo;m Travis Lima — a customer success leader at WooCommerce, WordCamp speaker, and
+      builder. Ten years ago I was a welding inspector in South Africa. WordPress changed the
+      direction of my life, and now I spend mine helping merchants change theirs.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a
+        href="/about/"
+        class="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-surface transition-colors hover:bg-accent-strong"
+      >
+        My story
+      </a>
+      <a
+        href="/writing/"
+        class="rounded-full border border-line px-5 py-2.5 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
+      >
+        Read my writing
+      </a>
+    </div>
+  </section>
+
+  <section class="border-t border-line py-14" aria-labelledby="proof-heading">
+    <h2 id="proof-heading" class="sr-only">What I do</h2>
+    <div class="grid gap-10 sm:grid-cols-3 sm:gap-6">
+      {
+        proofPoints.map((point) => (
+          <div>
+            <h3 class="font-display text-lg font-semibold leading-snug">
+              {point.href ? (
+                <a href={point.href} class="transition-colors hover:text-accent">
+                  {point.title}
+                </a>
+              ) : (
+                point.title
+              )}
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink-muted">{point.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="border-t border-line py-14" aria-labelledby="writing-heading">
+    <div class="flex items-baseline justify-between">
+      <h2 id="writing-heading" class="font-display text-2xl font-semibold">Latest writing</h2>
+      <a href="/writing/" class="text-sm text-accent hover:text-accent-strong transition-colors">
+        All posts &rarr;
+      </a>
+    </div>
+    <ul class="mt-6 space-y-6">
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/writing/${post.id}/`} class="group block">
+              <h3 class="font-display text-lg font-semibold group-hover:text-accent transition-colors">
+                {post.data.title}
+              </h3>
+              <p class="mt-1 text-sm text-ink-muted">{post.data.description}</p>
+              <time datetime={post.data.pubDate.toISOString()} class="mt-1 block text-xs text-ink-muted">
+                {post.data.pubDate.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </time>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

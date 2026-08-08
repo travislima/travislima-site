@@ -1,0 +1,149 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/inter';
+
+/*
+  Semantic color tokens. Light palette on :root, dark via prefers-color-scheme.
+  Registered with Tailwind through @theme inline so utilities like bg-surface
+  and text-ink flip automatically with the user's color scheme.
+*/
+:root {
+  --surface: #faf6f0;
+  --surface-raised: #ffffff;
+  --ink: #1c1712;
+  --ink-muted: #6b5f52;
+  --line: #e6ddd1;
+  --accent: #b4441c;
+  --accent-strong: #96350f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #171310;
+    --surface-raised: #211c17;
+    --ink: #f2ece3;
+    --ink-muted: #a8998a;
+    --line: #352d25;
+    --accent: #e87947;
+    --accent-strong: #f09362;
+  }
+}
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --font-display: 'Fraunces Variable', Georgia, serif;
+  --font-body: 'Inter Variable', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: var(--surface);
+}
+
+/* Long-form article styling (blog posts) */
+.prose-article {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.prose-article h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-article h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-article p {
+  margin-bottom: 1.25rem;
+}
+
+.prose-article a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose-article a:hover {
+  color: var(--accent-strong);
+}
+
+.prose-article ul,
+.prose-article ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.prose-article ul {
+  list-style: disc;
+}
+
+.prose-article ol {
+  list-style: decimal;
+}
+
+.prose-article li {
+  margin-bottom: 0.375rem;
+}
+
+.prose-article blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.25rem;
+  font-style: italic;
+  color: var(--ink-muted);
+  margin: 1.5rem 0;
+}
+
+.prose-article code {
+  background-color: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.125rem 0.375rem;
+  font-size: 0.9em;
+}
+
+.prose-article pre {
+  background-color: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+}
+
+.prose-article pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.prose-article hr {
+  border-color: var(--line);
+  margin: 2.5rem 0;
+}

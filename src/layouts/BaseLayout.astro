@@ -1,0 +1,106 @@
+---
+import '../styles/global.css';
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, NAV_LINKS, SOCIAL, EMAIL } from '../consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogType?: string;
+}
+
+const { title, description = SITE_DESCRIPTION, ogType = 'website' } = Astro.props;
+const pageTitle = title ? `${title} — ${SITE_TITLE}` : `${SITE_TITLE} — Ecommerce, WooCommerce & Customer Success`;
+const canonical = new URL(Astro.url.pathname, SITE_URL);
+const currentPath = Astro.url.pathname;
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Travis Lima',
+  url: SITE_URL,
+  jobTitle: 'Customer Success Senior Manager',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'WooCommerce',
+    url: 'https://woocommerce.com',
+  },
+  description: SITE_DESCRIPTION,
+  sameAs: [SOCIAL.github, SOCIAL.x, SOCIAL.linkedin, SOCIAL.wordpress, SOCIAL.instagram],
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss.xml" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content="light dark" />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={SITE_TITLE} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@travislima" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="border-b border-line">
+      <div class="mx-auto flex w-full max-w-3xl items-center justify-between px-5 py-5">
+        <a href="/" class="font-display text-lg font-semibold tracking-tight hover:text-accent transition-colors">
+          Travis Lima
+        </a>
+        <nav aria-label="Main">
+          <ul class="flex items-center gap-5 text-sm">
+            {
+              NAV_LINKS.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    aria-current={currentPath.startsWith(link.href) ? 'page' : undefined}
+                    class:list={[
+                      'transition-colors hover:text-accent',
+                      currentPath.startsWith(link.href) ? 'text-accent font-medium' : 'text-ink-muted',
+                    ]}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-1 w-full mx-auto max-w-3xl px-5">
+      <slot />
+    </main>
+
+    <footer class="border-t border-line mt-20">
+      <div class="mx-auto w-full max-w-3xl px-5 py-10 text-sm text-ink-muted">
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <a href={SOCIAL.github} class="hover:text-accent transition-colors" rel="me">GitHub</a>
+          <a href={SOCIAL.x} class="hover:text-accent transition-colors" rel="me">X</a>
+          <a href={SOCIAL.linkedin} class="hover:text-accent transition-colors" rel="me">LinkedIn</a>
+          <a href={SOCIAL.wordpress} class="hover:text-accent transition-colors" rel="me">WordPress.org</a>
+          <a href={`mailto:${EMAIL}`} class="hover:text-accent transition-colors">Email</a>
+          <a href="/rss.xml" class="hover:text-accent transition-colors">RSS</a>
+        </div>
+        <p class="mt-4">
+          &copy; {new Date().getFullYear()} Travis Lima. Views are my own, not my employer&rsquo;s.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
