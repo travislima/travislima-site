@@ -5,7 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://travislima.com',
+  // github.io preview for now; flip back to https://travislima.com at DNS cutover
+  site: 'https://travislima.github.io',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

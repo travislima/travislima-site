@@ -45,9 +45,23 @@ The three seeded posts are **starter drafts written on Travis's behalf**. Edit f
 
 ## Deploying
 
-A GitHub Pages workflow (`.github/workflows/deploy.yml`) deploys on push to `main` (enable **Settings → Pages → Source: GitHub Actions**). The site also works as-is on Cloudflare Pages or Netlify (build command `npm run build`, output `dist/`).
+A GitHub Pages workflow (`.github/workflows/deploy.yml`) deploys on push to `main`. Current setup: **github.io preview**.
 
-`astro.config.mjs` sets `site: 'https://travislima.com'`. Update it if deploying to a different domain first (e.g. a `*.github.io` preview needs `site` + `base` adjusted).
+One-time repo settings (done in the GitHub UI):
+
+1. Rename the repo to `travislima.github.io` (Settings → General → Repository name), so the site serves at the root URL with no base-path changes.
+2. Enable Pages: Settings → Pages → Build and deployment → Source: **GitHub Actions**.
+
+After that, every push to `main` deploys to `https://travislima.github.io/`.
+
+### Later: moving to travislima.com
+
+1. In Settings → Pages, set **Custom domain** to `travislima.com` (or commit a `public/CNAME` file containing `travislima.com`).
+2. At the domain registrar, point `travislima.com` A records to `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, and add a `www` CNAME to `travislima.github.io`.
+3. Set `site: 'https://travislima.com'` in `astro.config.mjs` and push.
+4. Enable **Enforce HTTPS** in Pages settings once the certificate is issued.
+
+The site also works as-is on Cloudflare Pages or Netlify (build command `npm run build`, output `dist/`).
 
 ## Still to do (deliberately not in v1)
 
